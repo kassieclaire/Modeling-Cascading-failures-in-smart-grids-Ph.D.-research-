@@ -269,7 +269,7 @@ capalogcell;
 toc
 
 
-
+{
 
 % for line failure plot with different capacities: PD , 01/11/2018
 capFailSeq = capalogcell;
@@ -305,37 +305,38 @@ totalFail(1:5,:)
 plot(totalFail(1:5,:)')
 xlim([0 10])
 
-Blackoutsize=zeros(NumBranches,1);
-for i=1:length(States(:,1))
-    if(States(i,8)==-1)
-        Blackoutsize(States(i,1))=Blackoutsize(States(i,1))+1;
-    end
-end
-bar(Blackoutsize);
-loglog(1:231,Blackoutsize);
+% Blackoutsize=zeros(NumBranches,1);
+% for i=1:length(States(:,1))
+%     if(States(i,8)==-1)
+%         Blackoutsize(States(i,1))=Blackoutsize(States(i,1))+1;
+%     end
+% end
+% bar(Blackoutsize);
+% loglog(1:231,Blackoutsize);
 
-% For 118 case
-NumberOfLines = 186;
+% % For 118 case
+% NumberOfLines = 186;
+%
+% total_states = zeros(1, NumberOfLines);
+% stable_states = zeros(1, NumberOfLines);
+%
+% for i = 1:length(States)
+%     total_states(States(i,1)) = total_states(States(i,1)) + 1;
+%     if States(i,8) == -1
+%         stable_states(States(i,1)) = stable_states(States(i,1)) + 1;
+%     end
+% end
+%
+% cascade_stop = zeros(1, NumberOfLines);
+% for i = 1:NumberOfLines
+%     if total_states(i) ~= 0
+%         cascade_stop(i) = stable_states(i)/total_states(i);
+%     end
+% end
+%
+% figure (2)
+% plot(5:NumberOfLines, cascade_stop(5:NumberOfLines))
+% xlabel('Number of failed transmission lines')
+% ylabel('Cascade-stop probability')
 
-total_states = zeros(1, NumberOfLines);
-stable_states = zeros(1, NumberOfLines);
-
-for i = 1:length(States)
-    total_states(States(i,1)) = total_states(States(i,1)) + 1;
-    if States(i,8) == -1
-        stable_states(States(i,1)) = stable_states(States(i,1)) + 1;
-    end
-end
-
-cascade_stop = zeros(1, NumberOfLines);
-for i = 1:NumberOfLines
-    if total_states(i) ~= 0
-        cascade_stop(i) = stable_states(i)/total_states(i);
-    end
-end
-
-figure (2)
-plot(5:NumberOfLines, cascade_stop(5:NumberOfLines))
-xlabel('Number of failed transmission lines')
-ylabel('Cascade-stop probability')
-
+}

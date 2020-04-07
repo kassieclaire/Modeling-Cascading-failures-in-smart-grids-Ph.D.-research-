@@ -1,15 +1,16 @@
+function [States] = FindingStateSpace(CaseName, Iterations, InitialFailures, LoadGenerationRatio, LoadShedConstant, EstimationError)
 % Things added to this code
 % 1- There is some fixed probability of failure for neighbors of failed lines
 % 2- Failure prob corresponds to the amount of overload
 % 3- Set the new load shed status to grid before run it again
-clc; clear; close all;
+clc; close all;
 define_constants;
-CaseName='case118';
+%CaseName='case118'; %Function version uses given statename
 %%% Parameter initialization
 %TrueCaps=[20 80 200 500 800 9900]; % Zhuoyao
 TrueCaps=[20 60 120 200 332 9900]; % PD
 FakeCaps=TrueCaps;
-NumIt = 500; % Number of iteration for extracting states..
+NumIt = Iterations; % Number of iteration for extracting states..
 % Load=5.0; % This means initial demands will be multiplied by Load [3.5-6.7]
 FixedFailProb = 0.06; % some small prob of failure for neighbors of failed lines please assign it in this interval [0.01 0.2] not larger
 % Initial load on which the capacity of lines will be determined
@@ -52,8 +53,8 @@ NumBranches=length(mpc1.branch(:,6));
 for i=1:NumIt
     %     2 or 3 failures
     %     b = 1 + ceil(2*rand);
-    % 2 failure
-    b=2;
+    % set to Initial Failures
+    b=InitialFailures;
     randomindex = randperm(NumBranches);
     temp = randomindex(1:b);
     IniFidx = randomindex(1:b);
@@ -63,9 +64,9 @@ for i=1:NumIt
 end
 
 %Capacity
-DGRatioVector = [0.7]; %(r in paper)
-DeltaVector = [0.45]; % alpha, error (e in paper)
-NoCoopPercentageVector = [0.98]; % Beta, (\theta in paper)
+DGRatioVector = [LoadGenerationRatio]; %(r in paper)
+DeltaVector = [EstimationError]; % alpha, error (e in paper)
+NoCoopPercentageVector = [LoadShedConstant]; % Beta, (\theta in paper)
 
 tic
 for idx=1:length(NoCoopPercentageVector)
@@ -339,3 +340,4 @@ plot(5:NumberOfLines, cascade_stop(5:NumberOfLines))
 xlabel('Number of failed transmission lines')
 ylabel('Cascade-stop probability')
 
+end

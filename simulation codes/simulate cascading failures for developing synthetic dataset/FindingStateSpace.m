@@ -458,7 +458,9 @@ for i = 1:length(States)
         total_states(States(i,1)) = total_states(States(i,1)) + 1;
     end
     if States(i,8) == -1 % check if is the last state or not
-        stable_states(States(i,1)) = stable_states(States(i,1)) + 1;
+        if States(i,1) > 0
+            stable_states(States(i,1)) = stable_states(States(i,1)) + 1;
+        end
     end
 end
 % finding the p_stop

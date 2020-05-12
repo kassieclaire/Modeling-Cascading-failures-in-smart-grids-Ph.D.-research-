@@ -1,1 +1,5 @@
-FindingStateSpace('case118', 10, 3, .7, .97, .02)
+FindingStateSpacePhysical('case118', 5000, 3, .7, .97, .02)
+
+5000 iterations
+parallel (R7 1700: 8 cores, 16 threads @ 4Ghz): 162.69 seconds
+single-thread: (R7 1700: 4Ghz): 1346.664822 seconds.

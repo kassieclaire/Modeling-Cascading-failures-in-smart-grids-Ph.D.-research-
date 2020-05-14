@@ -1,4 +1,4 @@
-function [States] = FindingStateSpace(CaseName, Iterations, InitialFailures, LoadGenerationRatio, LoadShedConstant, EstimationError, MaxFailedCapacity)
+function [States] = FindingStateSpace(CaseName, Iterations, InitialFailures, LoadGenerationRatio, LoadShedConstant, EstimationError)
 %%Notes:
 %MaxFailedCapacity value not used yet -- analytical model feature only
 

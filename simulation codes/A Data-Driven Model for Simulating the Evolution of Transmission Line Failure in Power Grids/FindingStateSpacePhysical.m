@@ -97,7 +97,7 @@ for idx=1:length(NoCoopPercentageVector)
             
             StatesCell = cellmat(NumIt, 1, 1000, 14);
             
-            for s=1:NumIt % for every iteration under the same setting
+            parfor s=1:NumIt % for every iteration under the same setting
                 %s %print out s
                 StatesCell(s, 1) = {DCPowerFlowSimulation(OriginalMPC, NumBranches, NoCoopPercentage, StateCounter, TrueCaps, DGRatio, WhichInitialLoad, Capacity, s, IniFtable, Demand, Degrees, HopDist, DemandIndex, alpha)};
 

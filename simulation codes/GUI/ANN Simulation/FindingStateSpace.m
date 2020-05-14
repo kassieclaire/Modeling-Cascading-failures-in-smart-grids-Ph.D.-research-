@@ -1,4 +1,4 @@
-function [States] = FindingStateSpace(CaseName, Iterations, InitialFailures, LoadGenerationRatio, LoadShedConstant, EstimationError, MaxFailedCapacity)
+function [States] = FindingStateSpace(CaseName, Iterations, InitialFailures, LoadGenerationRatio, LoadShedConstant, EstimationError)
     define_constants;
     caseName = CaseName;
     NumIt = Iterations;
@@ -7,8 +7,7 @@ function [States] = FindingStateSpace(CaseName, Iterations, InitialFailures, Loa
     NoCoopPercentage = LoadShedConstant;
     NoCoopPercentage_original = LoadShedConstant;
     alpha = EstimationError;
-    alpha_original = EstimationError;
-    NewCapM = MaxFailedCapacity;
+    alpha_original = EstimationError; 
     %caseName='case300';
     %caseName='case118';
     FakeCapRate = 1; % fake capacity

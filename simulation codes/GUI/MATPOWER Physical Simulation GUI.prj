@@ -1,0 +1,81 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="454881572" file="C:\Users\3487povinej\Documents\GitHub\Modeling-Cascading-failures-in-smart-grids-Ph.D.-research-\simulation codes\GUI\MATPOWER Physical Simulation GUI.prj" location="C:\Users\3487povinej\Documents\GitHub\Modeling-Cascading-failures-in-smart-grids-Ph.D.-research-\simulation codes\GUI" name="MATPOWER Physical Simulation GUI" target="target.mlapps" target-name="Package App">
+    <param.appname>MATPOWER Physical Simulation GUI</param.appname>
+    <param.authnamewatermark>Kassie Povinelli</param.authnamewatermark>
+    <param.email>kassie.povinelli@marquette.edu</param.email>
+    <param.company>Marquette University</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>Web app for Marquette University's SACE lab physical simulator with human error that functions on both IEEE 118 and 300 bus topologies</param.summary>
+    <param.description />
+    <param.screenshot>C:\Users\3487povinej\AppData\Local\Temp\tpa885fdde_267b_4799_a68c_29f1b1475b8d.png</param.screenshot>
+    <param.version>0.2</param.version>
+    <param.products.name>
+      <item>MATLAB</item>
+      <item>Deep Learning Toolbox</item>
+      <item>Parallel Computing Toolbox</item>
+    </param.products.name>
+    <param.products.id>
+      <item>1</item>
+      <item>12</item>
+      <item>80</item>
+    </param.products.id>
+    <param.products.version>
+      <item>9.8</item>
+      <item>14.0</item>
+      <item>7.2</item>
+    </param.products.version>
+    <param.platforms />
+    <param.output>C:\Users\3487povinej\Documents\GitHub\Physical-Simulator-GUI-Package</param.output>
+    <param.guid>e89cc4ca-eca1-4fe6-8fa6-75e302b74815</param.guid>
+    <unset>
+      <param.icon />
+      <param.icons />
+      <param.description />
+      <param.platforms />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\PhysicalSimGUI.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\BlackOutSize.m</file>
+      <file>${PROJECT_ROOT}\cascadeStop.m</file>
+      <file>${PROJECT_ROOT}\DCPowerFlowSimulation.m</file>
+    </fileset.depfun>
+    <fileset.resources>
+      <file>C:\Users\3487povinej\Documents\GitHub\Modeling-Cascading-failures-in-smart-grids-Ph.D.-research-\simulation codes\A Data-Driven Model for Simulating the Evolution of Transmission Line Failure in Power Grids</file>
+      <file>C:\Users\3487povinej\Documents\matpower7.0</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\3487povinej\Documents\GitHub" name="Physical-Simulator-GUI-Package" optional="false">C:\Users\3487povinej\Documents\GitHub\Physical-Simulator-GUI-Package</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2020a</root>
+      <toolboxes>
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>

@@ -1,4 +1,4 @@
-FindingStateSpacePhysical('case118', 5000, 3, .7, .97, .02)
+S_FindingStateSpace_ANN_dataset_function('case118', 5000, 3, .7, .97, .02)
 
 5000 iterations
 parallel (R7 1700: 8 cores, 16 threads @ 4Ghz): 162.69 seconds

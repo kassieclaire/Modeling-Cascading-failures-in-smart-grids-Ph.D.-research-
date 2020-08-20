@@ -16,7 +16,7 @@ function [fullLoad, G, D, I]=S_FindFullLoadOfGrid(mpc1)
 
 %%%%% Calculating the total demand and generation capacity of the grid%%%%%
         Demand=0;
-        DemandIndex=zeros(1,NumGens);
+        DemandIndex=zeros(1,NumGens); %DemandIndex is not large enough for extra large test cases
         Generation=0;
         for i=1:NumGens
             if (mpc1.gen(i,10)<0)

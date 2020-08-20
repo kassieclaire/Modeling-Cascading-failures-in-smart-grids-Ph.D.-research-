@@ -4,6 +4,11 @@ function [States] = S_FindingStateSpace_ANN_dataset_function(CaseName, Iteration
 %close all;
 define_constants;
 %CaseName='case300';
+
+%[originalNumBus, originalNumGen, originalNumBran, NumBuses, mpc1, LoadGenMatch, Generation, Demand, DemandIndex, FakeCapRate, FlowCap TrueCaps, NumBranches, WhichInitialLoad, OriginalMPC] = prepareCase(CaseName);
+
+
+
 FakeCapRate = 1; % fake capacity
 %% Parameter initialization
 TrueCaps=[50 100 200 400 800]; % quantized capacity
@@ -18,8 +23,15 @@ NumBuses = length(mpc1.bus(:,1));
 NumBranches = originalNumBran;
 %% Seperate the buses with both load and generators into seperate load and generator buses
 [mpc1 LoadGenMatch] = S_SeperateGenAndLoad(mpc1);
+
+[WhichInitialLoad, Generation, Demand, DemandIndex] = S_FindFullLoadOfGrid(mpc1);
+
 %% Calculating the total demand and generation capacity of the grid%%%%%
-[WhichInitialLoad, Generation, Demand, DemandIndex]=S_FindFullLoadOfGrid(mpc1);
+%if strcmp(CaseName, 'case2383wp')
+%   [WhichInitialLoad, Generation, Demand, DemandIndex] = S_FindFullLoadOfGrid_LargeGrid(mpc1);
+%else
+%   [WhichInitialLoad, Generation, Demand, DemandIndex] = S_FindFullLoadOfGrid(mpc1);
+%end
 %%
 clear mpc1; % clear because
 mpc1 = loadcase(CaseName);
@@ -102,7 +114,7 @@ tic
 %Parallelization added by Kassie Povinelli
 StatesCell = cellmat(NumIt, 1, 1000, 14);
 parfor s=1:NumIt % for every iteration under the same setting
-    %s %print out s
+    s %print out s
     StatesCell(s, 1) = {S_DCPowerFlowSimulation_ANN_dataset(OriginalMPC, NumBranches, NoCoopPercentageVector, StateCounter, TrueCaps, DGRatioVector, WhichInitialLoad, Capacity, s, IniFtable, len_DGRatioVector, len_DeltaVector, DeltaVector, len_NoCoopPercentageVector, FlowCap, DemandIndex)};
     
 end
